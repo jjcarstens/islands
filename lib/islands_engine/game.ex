@@ -1,10 +1,10 @@
 defmodule IslandsEngine.Game do
-  use GenServer, start: {__MODULE__, :start_link, []}, restart: :transient
+  use GenServer, restart: :transient
   alias IslandsEngine.{Board, Coordinate, Guesses, Island, Rules}
 
   defguard valid_player?(player) when player in [:player1, :player2]
 
-  @timeout 150000
+  @timeout 15000
 
   def start_link(name) when is_binary(name) do
     GenServer.start_link(__MODULE__, name, [name: via_tuple(name)])
